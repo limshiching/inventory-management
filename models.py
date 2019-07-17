@@ -16,7 +16,7 @@ class BaseModel(pw.Model):
 
     class Meta:
         database = db
-        legacy_tables_names = False
+        legacy_table_names = False
 
 
 class Store(BaseModel):
