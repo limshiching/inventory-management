@@ -39,6 +39,10 @@ def store_create():
     s.save()
     return redirect(url_for('store_new'))
 
+@app.route('/stores')
+def store_display():
+    stores = Store.select()
+    return render_template('stores.html',stores=stores)
 
 @app.route('/warehouse')
 def warehouse_new():
@@ -48,7 +52,7 @@ def warehouse_new():
 
 @app.route('/warehouse/create', methods=["POST"])
 def warehouse_create():
-    print(request.form['store_id'])
+    # print(request.form['store_id'])
     store = Store.get_by_id(request.form['store_id'])
     w = Warehouse(location=request.form['warehouse_location'], store=store)
     w.save()

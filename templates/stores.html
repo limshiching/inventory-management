@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<form action="{{ url_for('store_display') }}" method="GET">
+
+    <table class="table">
+
+        <th>
+            <h1>Stores</h1>
+            <h3>Store Names</h3>
+        </th>
+        </div>
+
+        <body>
+            {% for store in stores %}
+            <tr>
+                <td value="{{store.id}}">
+                    {{ store.name }}</td>
+            </tr>
+            {% endfor %}
+        </body>
+
+    </table>
+
+
+</form>
+
+{% endblock %}
