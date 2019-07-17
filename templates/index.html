@@ -1,5 +1,9 @@
 {% extends "_layout.html" %}
 {% block content %}
-<h1>Homepage</h1>
-<a href="{{ url_for('store_new') }}" class="btn">Store</a>
+<div class=text-center>
+    <h1>Homepage</h1>
+    <a href="{{ url_for('store_new') }}" class="btn">Store</a><br>
+    <a href="{{ url_for('warehouse_new') }}" class="btn">Warehouse</a>
+</div>
+
 {% endblock %}

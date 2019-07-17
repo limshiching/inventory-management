@@ -1,6 +1,6 @@
 import peeweedbevolve
-from flask import Flask, render_template, request, redirect,url_for
-from models import db, Store
+from flask import Flask, render_template, request, redirect,url_for, flash
+from models import db, Store, Warehouse
 
 app = Flask(__name__)
 
@@ -38,6 +38,21 @@ def store_create():
     s = Store(name=store_name)
     s.save()
     return redirect(url_for('store_new'))
+
+
+@app.route('/warehouse')
+def warehouse_new():
+    stores = Store.select() # PUT IN HERE AS NEED TO RENDER TEMPLATE, NOT IN WAREHOUSE HTML
+    return render_template('warehouse.html',stores=stores)
+
+
+@app.route('/warehouse/create', methods=["POST"])
+def warehouse_create():
+    print(request.form['store_id'])
+    store = Store.get_by_id(request.form['store_id'])
+    w = Warehouse(location=request.form['warehouse_location'], store=store)
+    w.save()
+    return redirect(url_for ('warehouse_new'))
 
 
 if __name__ == '__main__':
