@@ -39,10 +39,18 @@ def store_create():
     s.save()
     return redirect(url_for('store_new'))
 
+
 @app.route('/stores')
 def store_display():
     stores = Store.select()
     return render_template('stores.html',stores=stores)
+
+
+@app.route('/store/<id>', methods =["GET"])
+def store_info(id):
+    store = Store.get_by_id(id)
+    return render_template('store_info.html', store=store)
+
 
 @app.route('/warehouse')
 def warehouse_new():

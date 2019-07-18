@@ -1,26 +1,26 @@
 {% extends "_layout.html" %}
 {% block content %}
 
-<form action="{{ url_for('store_display') }}" method="GET">
+<table class="table">
 
-    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Store Names</th>
+            <th scope="col">Number of Warehouses</th>
+        </tr>
+    </thead>
 
-        <th>
-            <h1>Stores</h1>
-            <h3>Store Names</h3>
-        </th>
-        </div>
+    <body>
+        {% for store in stores %}
+        <tr>
+            <td value="{{store.id}}">
+                {{ store.name }}</td>
+            <td>{{store.warehouses | length}}</td>
+        </tr>
+        {% endfor %}
+    </body>
 
-        <body>
-            {% for store in stores %}
-            <tr>
-                <td value="{{store.id}}">
-                    {{ store.name }}</td>
-            </tr>
-            {% endfor %}
-        </body>
-
-    </table>
+</table>
 
 
 </form>
